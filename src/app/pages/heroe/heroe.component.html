@@ -1,0 +1,79 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Envio a Firebase Form Reactive</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+    
+        
+    <form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+      
+         
+        <div class="controles-container">
+
+            <div class="form-group">
+
+            <input type="hidden" formControlName="id">
+            <input formControlName="nombre" matInput placeholder="Full Name*">
+            <input formControlName="poder" matInput placeholder="Email">
+            
+            </div>
+          
+         
+            <div class="form-group">
+            <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+
+            </div>
+        
+
+           
+          
+        </div>
+    
+      
+
+     
+    
+  </form>
+    
+    </div>
+    
+
+    <div class="col-md-6">
+        <table class="table">
+
+            <thead class="thead-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Poder</th>                
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let h of heroe; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td (click)="getid(h.id)"   >{{ h.nombre }}</td>
+                    <td>{{ h.poder }}</td>
+                    
+                    <td><i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(h.id)"></i></td>
+                  
+                </tr>
+            </tbody>
+        
+
+        </table>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+

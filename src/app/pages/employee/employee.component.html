@@ -1,0 +1,58 @@
+
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Envio a Firebase Form Employee</h1>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <form [formGroup]="form"  (submit)="onSubmit()"   >
+
+            <div class="form-group">
+            <input type="hidden" formControlName="id">
+            <input type="text" [formControlName]="'username'"  matInput placeholder="Username*"  />
+            <input type="password" [formControlName]="'password'"  matInput placeholder="Password*"/>
+            </div>
+            <div class="form-group">
+                <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+        
+                </div>
+            
+          </form>
+
+    </div>
+
+    <div class="col-md-6">
+        <table class="table">
+
+            <thead class="thead-light">
+                <tr>
+                    <th>Username</th>
+                    <th>password</th>                
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of employee; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td  (click)="getid(e.id)" >{{ e.username }}</td>
+                    <td  (click)="getid(e.id)" >{{ e.password }}</td>
+                    
+                    <td><i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(e.id)"></i></td>
+                  
+                </tr>
+            </tbody>
+        
+
+        </table>
+    </div>
+
+
+
+
+
+
+
+ </div>       
+
+
